@@ -1,14 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import ButtonAppBar from './components/buttonAppBar';
-import { Button } from '@mui/material';
+import React from "react";
+import AppBar from "./Components/AppBar";
+import Login from "./Components/Login";
+import OutlinedCard from "./Components/Dashboard";
 
-function App() {
+export default function App() {
+  const [loggedIn, setLoggedIn] = React.useState(false);
   return (
-    <div className="App">
-      <ButtonAppBar />
+    <div>
+      <AppBar />
+      {!loggedIn && <Login setLoggedIn={setLoggedIn} />}
+      <OutlinedCard />
     </div>
   );
 }
-
-export default App;
