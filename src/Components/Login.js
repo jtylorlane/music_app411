@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -7,30 +7,35 @@ import Button from "@mui/material/Button";
 export default function Login(props) {
   return (
     <>
-      <Stack spacing={2}>
-        <TextField
-          id="demo-helper-text-misaligned"
-          label="Required"
-          defaultValue="Username"
-          sx={{ width: "30%" }}
-          required
-        />
-        <TextField
-          id="filled-required"
-          label="Required"
-          defaultValue="Password"
-          sx={{ width: "30%" }}
-          required
-        />
-      </Stack>
-
+      {!props.loggedIn ? (
+        <div className="textfield">
+          <Stack spacing={1}>
+            <TextField
+              className="textfield-child"
+              id="demo-helper-text-misaligned"
+              label="Required"
+              defaultValue="Username"
+              sx={{ width: "30%", margin: "auto" }}
+              required
+            />
+            <TextField
+              className="textfield-child"
+              id="demo-helper-text-misaligned"
+              label="Required"
+              defaultValue="Password"
+              sx={{ width: "30%", margin: "auto" }}
+              required
+            />
+          </Stack>
+        </div>
+      ) : null}
       <Button
-        onClick={() => props.setLoggedIn(true)}
+        onClick={() => props.setLoggedIn(!props.loggedIn)}
         className="login-button"
         variant="contained"
         color="success"
       >
-        Login
+      { props.loggedIn ?  "Logged Out" : "Log In"}
       </Button>
     </>
   );

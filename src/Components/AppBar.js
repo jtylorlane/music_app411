@@ -9,8 +9,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
+
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  alignItems: "flex-start",
+  alignItems: "auto",
   paddingTop: theme.spacing(1),
   paddingBottom: theme.spacing(2),
   // Override media queries injected by theme.mixins.toolbar
@@ -40,7 +41,7 @@ export default function ProminentAppBar() {
               component="div"
               sx={{ flexGrow: 1, alignSelf: "flex-end" }}
             >
-              MUSIC APP
+              Music App
             </Typography>
             <IconButton size="large" aria-label="search" color="inherit">
               <SearchIcon />
