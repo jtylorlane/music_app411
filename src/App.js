@@ -1,11 +1,7 @@
 import React from "react";
 import AppBar from "./Components/AppBar";
 import Login from "./Components/Login";
-import Outlinedcard from "./Components/Dashboard"
-
-
-
-
+import BasicCard from "./Components/Dashboard";
 
 export default function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -13,7 +9,7 @@ export default function App() {
     <div>
       <AppBar />
       <Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
-      <Outlinedcard />
+      <BasicCard />
     </div>
   );
 }

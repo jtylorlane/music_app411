@@ -2,11 +2,22 @@ import * as React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import { CardContent, CardActions } from "@mui/material";
+import { CardContent } from "@mui/material";
 
 export default function SwitchLabels(props) {
+  const { setNotification, setStatus, status, notification } = props;
+  const warningMessage =
+    "Your application is offline. You won't be able to share or stream music to other devices.";
+  const index = notification.indexOf(warningMessage);
 
-const handleChange = (event) => props.setStatus(event.target.checked);
+  const handleChange = (event, newStatus) => {
+    setStatus(event.target.checked);
+    if (newStatus === false && index === -1) {
+      setNotification([...notification, warningMessage]);
+    } else if (newStatus === true) {
+      setNotification(notification.splice());
+    }
+  };
 
   return (
     <CardContent>
@@ -14,7 +25,7 @@ const handleChange = (event) => props.setStatus(event.target.checked);
         <FormControlLabel
           control={
             <Switch
-              checked={props.status}
+              checked={status}
               onChange={handleChange}
               inputProps={{ "aria-label": "controlled" }}
             />

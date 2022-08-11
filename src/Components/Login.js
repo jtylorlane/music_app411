@@ -8,35 +8,27 @@ export default function Login(props) {
   return (
     <>
       {!props.loggedIn ? (
-        <div className="textfield">
-          <Stack spacing={1}>
-            <TextField
-              className="textfield-child"
-              id="demo-helper-text-misaligned"
-              label="Required"
-              defaultValue="Username"
-              sx={{ width: "30%", margin: "auto" }}
-              required
-            />
-            <TextField
-              className="textfield-child"
-              id="demo-helper-text-misaligned"
-              label="Required"
-              defaultValue="Password"
-              sx={{ width: "30%", margin: "auto" }}
-              required
-            />
+        <div
+          style={{
+            // display: "flex",
+            justifyContent: "center",
+            margin: "60px 200px 80px",
+          }}
+          className="textfield"
+        >
+          <Stack spacing={5}>
+            <TextField label="Required" defaultValue="Username" required />
+            <TextField label="Required" defaultValue="Password" required />
+            <Button
+              onClick={() => props.setLoggedIn(!props.loggedIn)}
+              variant="contained"
+              color="success"
+            >
+              {props.loggedIn ? "Log Out" : "Log In"}
+            </Button>
           </Stack>
         </div>
       ) : null}
-      <Button
-        onClick={() => props.setLoggedIn(!props.loggedIn)}
-        className="login-button"
-        variant="contained"
-        color="success"
-      >
-      { props.loggedIn ?  "Logged Out" : "Log In"}
-      </Button>
     </>
   );
 }
