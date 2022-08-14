@@ -12,6 +12,7 @@ export default function SwitchLabels(props) {
 
   const handleChange = (event, newStatus) => {
     setStatus(event.target.checked);
+    console.log("notification from switch", notification);
     if (newStatus === false && index === -1) {
       setNotification([...notification, warningMessage]);
     } else if (newStatus === true) {

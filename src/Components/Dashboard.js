@@ -6,7 +6,7 @@ import VolumeSlider from "./Controls/Volume";
 import SoundQuality from "./Controls/SoundQuality";
 import Notifications from "./Notifications";
 
-export default function BasicCard() {
+export default function Dashboard() {
   const [volume, setVolume] = React.useState(30);
   const [soundQuality, setSoundQuality] = React.useState("Normal");
   const [status, setStatus] = React.useState(false);
@@ -15,7 +15,7 @@ export default function BasicCard() {
   // console.log("Volume Status", volume);
   // console.log("Sound Quality", soundQuality);
   // console.log("Online Status", status);
-  console.log("Notification", notification);
+  // console.log("Notification", notification);
 
   return (
     <div className="every_Card">

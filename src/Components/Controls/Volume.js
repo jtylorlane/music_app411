@@ -7,24 +7,15 @@ export default function VolumeSlider(props) {
   const { setNotification, setVolume, volume, notification } = props;
   const handleChange = (event, newVolume) => {
     setVolume(event.target.value);
+    console.log("notification from volume", notification);
     const warningMessage =
-
-    // <Typography
-    //     sx={{
-    //       fontFamily: "arial",
-    //     }}
-    //     variant="h8"
-    //   >
-    //     "Listening to music at a high volume could cause long-term hearing loss."
-    //     </Typography>
-    
       "Listening to music at a high volume could cause long-term hearing loss.";
     const index = notification.indexOf(warningMessage);
 
     if (newVolume >= 80 && index === -1) {
       setNotification([...notification, warningMessage]);
     } else if (newVolume < 80) {
-      setNotification(notification.splice());
+      setNotification(notification.splice(index, 1));
     }
   };
   //how do i get all three notifications to appear at the same time?

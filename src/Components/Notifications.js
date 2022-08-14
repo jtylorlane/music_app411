@@ -9,6 +9,7 @@ export default function Notifcations(props) {
           fontFamily: "arial",
         }}
         variant="h6"
+        alignSelf='center'
       >
         System Notifications
         </Typography>
