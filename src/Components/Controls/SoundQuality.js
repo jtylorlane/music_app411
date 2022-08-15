@@ -9,19 +9,21 @@ export default function SoundQuality(props) {
   const { setNotification, setSoundQuality, soundQuality, notification } =
     props;
 
-  const handleChange = (event, newSoundQuality) => {
+  const handleChange = (event) => {
     setSoundQuality(event.target.value);
     console.log("notification from SoundQuality", notification);
     const warningMessage =
       "Music quality is degraded. Increase quality if your connection allows it.";
     const index = notification.indexOf(warningMessage);
 
-    // const newNotification = [...notifcation]
-
-    if (newSoundQuality.props.value === "Low" && index === -1) {
+    if (event.target.value === "Low" && index === -1) {
       setNotification([...notification, warningMessage]);
-    } else if (newSoundQuality !== "Low") {
-      setNotification(notification.splice());
+    } else if (event.target.value !== "Low" && index !== -1) {
+      setNotification((prevState) => {
+        let newState = [...prevState];
+        newState.splice(index, 1);
+        return newState;
+      });
     }
   };
 

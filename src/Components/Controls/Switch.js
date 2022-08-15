@@ -10,13 +10,17 @@ export default function SwitchLabels(props) {
     "Your application is offline. You won't be able to share or stream music to other devices.";
   const index = notification.indexOf(warningMessage);
 
-  const handleChange = (event, newStatus) => {
+  const handleChange = (event) => {
     setStatus(event.target.checked);
-    console.log("notification from switch", notification);
-    if (newStatus === false && index === -1) {
+
+    if (event.target.checked === false && index === -1) {
       setNotification([...notification, warningMessage]);
-    } else if (newStatus === true) {
-      setNotification(notification.splice());
+    } else if (event.target.checked === true && index !== -1) {
+      setNotification((prevState) => {
+        let newState = [...prevState];
+        newState.splice(index, 1);
+        return newState;
+      });
     }
   };
 

@@ -14,8 +14,12 @@ export default function VolumeSlider(props) {
 
     if (newVolume >= 80 && index === -1) {
       setNotification([...notification, warningMessage]);
-    } else if (newVolume < 80) {
-      setNotification(notification.splice(index, 1));
+    } else if (newVolume < 80 && index !== -1) {
+      setNotification((prevState) => {
+        let newState = [...prevState];
+        newState.splice(index, 1);
+        return newState;
+      });
     }
   };
   //how do i get all three notifications to appear at the same time?
