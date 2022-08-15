@@ -19,18 +19,14 @@ export default function SoundQuality(props) {
     if (event.target.value === "Low" && index === -1) {
       setNotification([...notification, warningMessage]);
     } else if (event.target.value !== "Low" && index !== -1) {
-      setNotification((prevState) => {
-        let newState = [...prevState];
-        newState.splice(index, 1);
-        return newState;
-      });
+      setNotification([...notification.filter((n) => n !== warningMessage)]);
     }
   };
 
   return (
     <CardContent>
       <FormControl fullWidth>
-        <InputLabel style={{ color: "black" }}>Sound Koala-ty</InputLabel>
+        <InputLabel style={{ color: "white" }}>Sound Koala-ty</InputLabel>
 
         <Select
           style={{ color: "white" }}

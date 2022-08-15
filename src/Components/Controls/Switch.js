@@ -16,11 +16,7 @@ export default function SwitchLabels(props) {
     if (event.target.checked === false && index === -1) {
       setNotification([...notification, warningMessage]);
     } else if (event.target.checked === true && index !== -1) {
-      setNotification((prevState) => {
-        let newState = [...prevState];
-        newState.splice(index, 1);
-        return newState;
-      });
+      setNotification([...notification.filter((n) => n !== warningMessage)]);
     }
   };
 
@@ -41,3 +37,4 @@ export default function SwitchLabels(props) {
     </CardContent>
   );
 }
+
